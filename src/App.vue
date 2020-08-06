@@ -1,19 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <nav class="navbar navbar-expand navbar-dark bg-dark">
+      <a href="#" class="navbar-brand">Deep Stock</a>
+      <div class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <router-link to="/stocks" class="nav-link">Stocks</router-link>
+        </li>
+        <li class="nav-item">
+          <a href="/add" class="nav-link">Add</a>
+        </li>
+      </div>
+    </nav>
+
+    <div class="container mt-3">
+      <h2>Stocks List</h2>
+      <router-view class="view"></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
@@ -23,6 +33,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
