@@ -5,6 +5,7 @@ module.exports = (sequelize, Sequelize) => {
       tsCode: {
         field: "ts_code",
         type: Sequelize.STRING,
+        primaryKey: true,
       },
       symbol: {
         type: Sequelize.STRING,

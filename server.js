@@ -2,9 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
-const db = require("./models");
+const db = require("./app/models");
 
-const Stock = db.stocks;
+const Stock = db.Stock;
 
 const app = express();
 
@@ -18,8 +18,9 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req, res) => {
-  res.json(Stock.findAll());
+app.get("/", async (req, res) => {
+  const stocks = await Stock.findAll();
+  res.json(stocks);
 });
 
 // set port, listen for requests
