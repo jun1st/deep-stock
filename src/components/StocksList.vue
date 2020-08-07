@@ -2,6 +2,9 @@
   <div class="list row">
     <div class="col-md-6">
       <h4>Stocks</h4>
+      <ul class="list-group">
+        <li class="list-group-item" v-for="(stock, index) in stocks" :key="index">{{ stock.name }}</li>
+      </ul>
     </div>
   </div>
 </template>
