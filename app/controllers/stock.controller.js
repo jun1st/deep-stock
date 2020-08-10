@@ -1,6 +1,7 @@
 const db = require("../models");
 
 const Stock = db.Stock;
+const StockDaily = db.StockDaily;
 
 exports.getAll = async (req, res) => {
   let type = req.query.type;
@@ -30,6 +31,19 @@ exports.getAll = async (req, res) => {
 };
 
 exports.findOne = async (req, res) => {
-  let path = req.path;
-  console.log(path);
+  let code = req.params.code;
+
+  let stock = await Stock.findOne({
+    where: {
+      symbol: code,
+    },
+  });
+
+  const trades = await StockDaily.findAll({
+    where: {
+      tsCode: stock.tsCode,
+    },
+  });
+
+  res.send({ stock: stock, trades: trades });
 };
