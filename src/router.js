@@ -12,8 +12,8 @@ export default new VueRouter({
       component: () => import("./components/StocksList"),
     },
     {
-      path: "/stocks/:id",
-      name: "stock detail",
+      path: "/stocks/:code",
+      name: "stock",
       component: () => import("./components/Stock"),
     },
   ],

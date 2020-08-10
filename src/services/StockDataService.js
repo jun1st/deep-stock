@@ -1,15 +1,16 @@
 import http from "../http-common";
 
 class StockDataService {
-  getHS300() {
-    return http.get("/stocks?type=hs300");
+  getAll(type) {
+    if (type === undefined) {
+      return http.get("/stocks");
+    } else {
+      return http.get("/stocks?type=" + type);
+    }
   }
 
-  getZZ500() {
-    return http.get("/stocks?type=zz500");
-  }
-  getAll() {
-    return http.get("/stocks");
+  findOne(code) {
+    return http.get("/stocks/" + code);
   }
 }
 
