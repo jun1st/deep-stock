@@ -30,45 +30,46 @@ export default {
             let code = this.$route.params.code;
 
             StockDataService.findOne(code).then((response) => {
-                this.chartData = {
-                    labels: [
-                        "January",
-                        "February",
-                        "March",
-                        "April",
-                        "May",
-                        "June",
-                        "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December",
-                    ],
-                    datasets: [
-                        {
-                            label: "GitHub Commits",
-                            backgroundColor: "#f87979",
-                            data: [
-                                40,
-                                20,
-                                12,
-                                39,
-                                10,
-                                40,
-                                39,
-                                80,
-                                40,
-                                20,
-                                12,
-                                11,
-                            ],
-                        },
-                    ],
-                };
+                // this.chartData = {
+                //     labels: [
+                //         "January",
+                //         "February",
+                //         "March",
+                //         "April",
+                //         "May",
+                //         "June",
+                //         "July",
+                //         "August",
+                //         "September",
+                //         "October",
+                //         "November",
+                //         "December",
+                //     ],
+                //     datasets: [
+                //         {
+                //             label: "GitHub Commits",
+                //             backgroundColor: "#f87979",
+                //             data: [
+                //                 40,
+                //                 20,
+                //                 12,
+                //                 39,
+                //                 10,
+                //                 40,
+                //                 39,
+                //                 80,
+                //                 40,
+                //                 20,
+                //                 12,
+                //                 11,
+                //             ],
+                //         },
+                //     ],
+                // };
 
                 this.options = {};
                 this.stock = response.data.stock;
+                this.chartData = response.data.trades;
                 this.trades = response.data.trades;
                 this.loaded = true;
             });

@@ -45,5 +45,16 @@ exports.findOne = async (req, res) => {
     },
   });
 
-  res.send({ stock: stock, trades: trades });
+  res.send({
+    stock: stock,
+    trades: {
+      labels: trades.map((t) => t.trade_date),
+      datasets: [
+        {
+          label: stock.name,
+          data: trades.map((t) => t.close),
+        },
+      ],
+    },
+  });
 };
